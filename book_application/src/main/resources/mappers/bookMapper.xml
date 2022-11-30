@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ws.model.dao.BookDao">
+
+	
+	
+	<!-- Book 정보를 저장한다. -->
+	<insert id="insert" parameterType="Book">
+		insert into book
+		values(#{isbn}, #{title},#{author})
+	</insert>
+
+	<!-- Book 정보를 삭제한다. -->
+	<delete id="delete" parameterType="string">
+		delete from book where
+		isbn=#{isbn}
+	</delete>
+
+	<!-- Book 정보를 수정한다. -->
+	<update id="update" parameterType="Book">
+		update book
+		set
+		author=#{author}, title=#{title}
+		where isbn=#{isbn}
+	</update>
+	
+	<select id="getBookList" resultType="Book">
+		select *
+		from book
+	</select>
+
+	<!-- Book 정보를 조회한다. -->
+	<select id="select" parameterType="string" resultType="Book">
+		select *
+		from book where isbn=#{isbn}
+	</select>
+
+</mapper>
